@@ -29,6 +29,7 @@ services:
       - node_modules:/myapp/node_modules
     environment:
       TZ: Asia/Tokyo
+      HOME: /tmp
     ports:
       - "3000:3000"
     depends_on:
