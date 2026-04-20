@@ -29,26 +29,39 @@
 Follow these steps to set up the environment using Docker.
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/kouta-wolf/tumige-memo.git
 cd tumige-memo
+```
+
 Ensure your current directory is tumige-memo, then run the following commands:
-code
-Bash
-# Build the Docker image
+
+```Bash
 $ docker compose build
+```
 
 # Prepare the database (create and migrate)
+```bash
 $ docker compose run --rm web rails db:prepare
+```
+
 Start the application:
-code
-Bash
+
+```bash
 $ docker compose up
+```
+
 Once the setup is complete, you can access the application at http://localhost:3000.
 Note
 Docker configurations may require minor adjustments depending on your local environment.
 Please manage environment variables (e.g., .env files) manually as needed for your setup.
-Author
+
+
+# Author
 Creator: kouta-wolf
 License
 "tumige-memo" is released under the MIT license.
+
+# Etc
+[ERD](https://drive.google.com/file/d/1v9MZNM2VHd5vGtF-5CtnPfMKHTlbj8b-/view?usp=sharing)
