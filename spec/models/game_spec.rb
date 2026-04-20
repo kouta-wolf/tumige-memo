@@ -22,4 +22,22 @@ RSpec.describe Game, type: :model do
       expect(game2.errors[:title]).to include("has already been taken")
     end
   end
+
+  describe 'アソシエーションのテスト' do
+    let(:game) { create(:game) }
+    let(:user1) { create(:user, name: "テスト太郎") }
+    let(:user2) { create(:user, name: "テスト次郎") }
+
+    it '複数のユーザーに所有されていること（throughの確認）' do
+      create(:user_game, user: user1, game: game)
+      create(:user_game, user: user2, game: game)
+      expect(game.users).to include(user1, user2)
+      expect(game.users.count).to eq 2
+    end
+
+    it 'ゲームを削除すると、紐づいているUserGameも削除されること' do
+      create(:user_game, user: user1, game: game)
+      expect { game.destroy }.to change(UserGame, :count).by(-1)
+    end
+  end
 end

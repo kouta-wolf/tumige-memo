@@ -53,4 +53,27 @@ RSpec.describe User, type: :model do
       expect(user.errors[:password_confirmation]).to include("doesn't match Password")
     end
   end
+
+  describe 'アソシエーションのテスト' do
+    let(:user) { create(:user) }
+    let(:game1) { create(:game, title: "Game_1") }
+    let(:game2) { create(:game, title: "Game_2") }
+
+    it '複数のゲームを所有できること（throughの確認）' do
+      create(:user_game, user: user, game: game1)
+      create(:user_game, user: user, game: game2)
+      expect(user.games).to include(game1, game2)
+      expect(user.games.count).to eq 2
+    end
+
+    it 'ユーザーを削除すると紐づくUserGameを削除する（dependent: :destroyの確認)' do
+      create(:user_game, user: user, game: game1)
+      expect { user.destroy }.to change(UserGame, :count).by(-1)
+    end
+
+    it 'ユーザーを削除しても、Game自体は削除されないこと' do
+      create(:user_game, user: user, game: game1)
+      expect { user.destroy }.not_to change(Game, :count)
+    end
+  end
 end
