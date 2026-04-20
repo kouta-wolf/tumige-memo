@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :review do
-    user_game { nil }
-    content { "MyText" }
+    association :user_game
+    sequence(:content) { |n| "Test Review Content #{n}" }
   end
 end
