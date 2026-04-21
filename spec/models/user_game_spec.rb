@@ -12,13 +12,13 @@ RSpec.describe UserGame, type: :model do
     it 'ユーザーがない場合は無効であること' do
       user_game = build(:user_game, user: nil)
       user_game.valid?
-      expect(user_game.errors[:user]).to include("must exist")
+      expect(user_game.errors[:user]).to include(I18n.t('errors.messages.required'))
     end
 
     it 'ゲームがない場合は無効であること' do
       user_game = build(:user_game, game: nil)
       user_game.valid?
-      expect(user_game.errors[:game]).to include("must exist")
+      expect(user_game.errors[:game]).to include(I18n.t('errors.messages.required'))
     end
 
     it '同じユーザーとゲームの組み合わせは登録できないこと' do
@@ -29,7 +29,7 @@ RSpec.describe UserGame, type: :model do
         game: user_game.game
         )
       expect(user_game2).not_to be_valid
-      expect(user_game2.errors[:user_id]).to include("has already been taken")
+      expect(user_game2.errors[:user_id]).to include(I18n.t('errors.messages.taken'))
     end
   end
 end

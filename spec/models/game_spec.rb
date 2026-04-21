@@ -12,14 +12,14 @@ RSpec.describe Game, type: :model do
     it 'タイトルが無い場合は無効であること' do
       game = build(:game, title: nil)
       game.valid?
-      expect(game.errors[:title]).to include("can't be blank")
+      expect(game.errors[:title]).to include(I18n.t('errors.messages.blank'))
     end
 
     it 'タイトルが重複する場合は無効であること' do
       game = create(:game, title: "SAME-man")
       game2 = build(:game, title: "SAME-man")
       game2.valid?
-      expect(game2.errors[:title]).to include("has already been taken")
+      expect(game2.errors[:title]).to include(I18n.t('errors.messages.taken'))
     end
   end
 

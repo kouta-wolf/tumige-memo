@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      user: "ユーザー"
+      game: "ゲーム"
+      user_game: "所持ゲーム"
+      review: "レビュー"
+    attributes:
+      user:
+        name: "ユーザー名"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認用）"
+      review:
+        content: "内容"

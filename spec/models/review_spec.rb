@@ -12,7 +12,7 @@ RSpec.describe Review, type: :model do
     it 'UserGameが無いなら保存できないこと' do
       review = build(:review, user_game: nil)
       review.valid?
-      expect(review.errors[:user_game]).to include("must exist")
+      expect(review.errors[:user_game]).to include(I18n.t('errors.messages.required'))
     end
 
     it '1つのUserGameに対して2つ以上のReviewを保存できないこと' do
@@ -20,7 +20,7 @@ RSpec.describe Review, type: :model do
       create(:review, user_game: user_game)
       duplicate_review = build(:review, user_game: user_game)
       expect(duplicate_review).not_to be_valid
-      expect(duplicate_review.errors[:user_game_id]).to include("has already been taken")
+      expect(duplicate_review.errors[:user_game_id]).to include(I18n.t('errors.messages.taken'))
     end
   end
 
