@@ -7,7 +7,7 @@
     <p class="text-sm text-gray-500 mt-2">おかえりなさい！ゲームの続きを記録しましょう</p>
     
     <div>
-      <%= form_with url: users_path, scope: :user, local: true do |f| %>
+      <%= form_with model: @user do |f| %>
       
         <div>
           <%= f.label :name, "名前", class: "block text-base font-medium text-gray-700 ml-1" %>
@@ -30,7 +30,7 @@
         </div>
         
         <div class="pt-8">
-          <%= f.submit "新規登録", 
+          <%= f.submit "登録", 
             class: "w-full py-2.5 px-6 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition duration-200 shadow-lg active:scale-95 transform cursor-pointer" %>
         </div>
       <% end %>
