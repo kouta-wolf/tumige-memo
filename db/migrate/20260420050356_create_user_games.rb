@@ -8,6 +8,6 @@ class CreateUserGames < ActiveRecord::Migration[8.1]
 
       t.timestamps
     end
-    add_index :user_games, [:user_id, :game_id], unique: true
+    add_index :user_games, [ :user_id, :game_id ], unique: true
   end
 end

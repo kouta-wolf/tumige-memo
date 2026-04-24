@@ -43,7 +43,7 @@ gem "thruster", require: false
 gem "image_processing", "~> 1.2"
 
 # Localization
-gem 'rails-i18n'
+gem "rails-i18n"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -59,16 +59,16 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # Rspec
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
+  gem "rspec-rails"
+  gem "factory_bot_rails"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   gem "hotwire-livereload"
-  gem 'rubocop', require: false
-  gem 'rubocop-rails', require:false
+  gem "rubocop", require: false
+  gem "rubocop-rails", require: false
 end
 
 group :test do

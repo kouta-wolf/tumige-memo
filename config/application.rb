@@ -18,7 +18,8 @@ module Myapp
 
     # i18nのconfig
     config.i18n.default_locale = :ja
+
     # config/locales 以下のすべてのディレクトリにある yml, rb ファイルを読み込む
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}").to_s]
   end
 end
