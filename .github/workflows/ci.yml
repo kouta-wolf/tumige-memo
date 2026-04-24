@@ -15,6 +15,11 @@ jobs:
           POSTGRES_USER: user
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: myapp_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - name: Checkout code
@@ -23,7 +28,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1.2
+          ruby-version: '3.4.8'
           bundler-cache: true
 
       - name: Cache node modules
@@ -34,16 +39,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Bundler and gem install
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3 --path vendor/bundle
-
-      - name: Database create and migrate
+      - name: Database setup
         run: |
           cp config/database.yml.ci config/database.yml
-          bundle exec rails db:create RAILS_ENV=test
-          bundle exec rails db:migrate RAILS_ENV=test
+          bundle exec rails db:prepare
+        env:
+          RAILS_ENV: test
 
       - name: Run rspec
         run: bundle exec rspec
@@ -57,13 +58,8 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1.2
+          ruby-version: '3.2.2'
           bundler-cache: true
-
-      - name: Bundler and gem install
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3 --path vendor/bundle
 
       - name: Run rubocop
         run: bundle exec rubocop
