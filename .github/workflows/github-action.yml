@@ -17,6 +17,10 @@ jobs:
           - 5432:5432
         env:
           POSTGRES_PASSWORD: password
+      selenium:
+        image: selenium/standalone-chrome:latest
+        ports:
+          - 4444:4444
 
     env:
       RAILS_ENV: test
@@ -38,9 +42,8 @@ jobs:
         env:
           RAILS_ENV: test
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_PASSWORD: password 
 
-      # テスト実行の前にアセットを準備する
       - name: Precompile assets
         run: bundle exec rails assets:precompile
       
@@ -48,5 +51,7 @@ jobs:
         env:
           RAILS_ENV: test
           DB_PASSWORD: password
+          SELENIUM_DRIVER_URL: http://localhost:4444/wd/hub
+          CAPYBARA_SERVER_HOST: 0.0.0.0
         run: |
           bundle exec rspec
