@@ -13,3 +13,9 @@ ja:
         password_confirmation: "パスワード（確認用）"
       review:
         content: "内容"
+  users:
+    new:
+      title: "新規登録"
+  sessions:
+    new:
+      title: "ログイン"

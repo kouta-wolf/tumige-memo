@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "積みゲーメモ" %></title>
+    <title><%= page_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Myapp">
@@ -24,6 +24,11 @@
   </head>
 
   <body>
+    <% if content_for?(:title) %>
+      <h1 class="text-3xl font-bold text-gray-800">
+        <%= yield(:title) %>
+      </h1>
+    <% end %>
     <% flash.each do |message_type, message| %>
       <div class="flash <%= message_type %>">
         <%= message %>
