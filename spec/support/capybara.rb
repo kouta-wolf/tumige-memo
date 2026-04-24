@@ -10,7 +10,7 @@ Capybara.register_driver :remote_chrome do |app|
   Capybara::Selenium::Driver.new(
     app,
     browser: :remote,
-    url: ENV.fetch('SELENIUM_DRIVER_URL'), # compose.ymlで設定したURL
+    url: ENV.fetch('SELENIUM_DRIVER_URL', 'http://selenium:4444/wd/hub'),
     capabilities: options
   )
 end
