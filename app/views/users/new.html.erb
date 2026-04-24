@@ -1,43 +1,31 @@
-<div class="min-h-screen bg-linear-to-br from-indigo-300 to-purple-400 flex items-center justify-center p-4">
-  <div class="max-w-md w-full bg-white rounded-3xl shadow-xl p-8 space-y-8 text-center">
-    <div class="mx-auto w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-      <span class="text-6xl">🎮️</span>
+<h1 class="text-4xl font-extrabold text-gray-800 tracking-tight">新規登録</h1>
+<p class="text-sm text-gray-500 mt-2">はじめまして！登録してゲームを記録しましょう！</p>
+
+<div>
+  <%= form_with model: @user do |f| %>
+    <div>
+      <%= f.label :name, "名前", class: "label-title" %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "input-field" %>
     </div>
-    <h1 class="text-4xl font-extrabold text-gray-800 tracking-tight">ログイン</h1>
-    <p class="text-sm text-gray-500 mt-2">おかえりなさい！ゲームの続きを記録しましょう</p>
+
+    <div>
+      <%= f.label :email, "メールアドレス", class: "label-title" %>
+      <%= f.email_field :email, autocomplete: "email", class: "input-field" %>
+    </div>  
     
     <div>
-      <%= form_with model: @user do |f| %>
-      
-        <div>
-          <%= f.label :name, "名前", class: "block text-base font-medium text-gray-700 ml-1" %>
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "mt-1 block w-full px-4 py-3 border border-gray-400 rounded-xl focus:ring-1 focus:ring-indigo-500 focus:border-transparent outline-none transition duration-200" %>
-        </div>
-
-        <div>
-          <%= f.label :email, "メールアドレス", class: "block text-base font-medium text-gray-700 ml-1" %>
-          <%= f.email_field :email, autocomplete: "email", class: "mt-1 block w-full px-4 py-3 border border-gray-400 rounded-xl focus:ring-1 focus:ring-indigo-500 focus:border-transparent outline-none transition duration-200" %>
-        </div>
-          
-        <div>
-          <%= f.label :password, "パスワード", class: "block text-base font-medium text-gray-700 ml-1" %>
-          <%= f.password_field :password, autocomplete: "password", class: "mt-1 block w-full px-4 py-3 border border-gray-400 rounded-xl focus:ring-1 focus:ring-indigo-500 focus:border-transparent outline-none transition duration-200" %>
-        </div>
-
-        <div>
-          <%= f.label :password_confirmation, "パスワード(確認)", class: "block text-base font-medium text-gray-700 ml-1" %>
-          <%= f.password_field :password_confirmation, autocomplete: "password", class: "mt-1 block w-full px-4 py-3 border border-gray-400 rounded-xl focus:ring-1 focus:ring-indigo-500 focus:border-transparent outline-none transition duration-200" %>
-        </div>
-        
-        <div class="pt-8">
-          <%= f.submit "登録", 
-            class: "w-full py-2.5 px-6 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition duration-200 shadow-lg active:scale-95 transform cursor-pointer" %>
-        </div>
-      <% end %>
+      <%= f.label :password, "パスワード", class: "label-title" %>
+      <%= f.password_field :password, autocomplete: "password", class: "input-field" %>
     </div>
-    
-    <div class="text-xs text-gray-400">
-      v1.0.0
+
+    <div>
+      <%= f.label :password_confirmation, "パスワード(確認)", class: "label-title" %>
+      <%= f.password_field :password_confirmation, autocomplete: "password", class: "input-field" %>
     </div>
-  </div>
+
+    <div class="pt-8">
+      <%= f.submit "登録", 
+        class: "btn btn-primary py-3" %>
+    </div>
+  <% end %>
 </div>
