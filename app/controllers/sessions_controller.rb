@@ -3,8 +3,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    logger.debug "--- ログインボタンが押されました！ ---"
-
-    render plain: params.inspect
+    user = User.find_by(email: params[:session][:email])
+    if user.authenticate(params[:session][:password])
+      session[:user_id] = user.id
+      redirect_to games_index_path, notice: 'ログインしました'
+    else
+      flash.now[:alert] = 'ログインに失敗しました'
+      render 'new', status: :unprocessable_entity
+    end
   end
 end
