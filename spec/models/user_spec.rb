@@ -20,7 +20,6 @@ RSpec.describe User, type: :model do
       user2 = build(:user, email: "same@example.com")
       user2.valid?
       expect(user2.errors[:email]).to include(I18n.t('errors.messages.taken'))
-
     end
 
     it "メールアドレスが無い場合は無効であること" do

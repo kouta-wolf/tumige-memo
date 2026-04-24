@@ -38,6 +38,14 @@ end
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
 RSpec.configure do |config|
+  config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium_chrome_headless
+  end
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')
@@ -75,13 +83,4 @@ RSpec.configure do |config|
 
   # FactoryBotのメソッドを直接使えるようにする設定
   config.include FactoryBot::Syntax::Methods
-  
-  # webdriverの設定
-  config.before(:each, type: :system) do
-    driven_by :remote_chrome
-    Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
-    Capybara.server_port = 4444
-    Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
-    Capybara.ignore_hidden_elements = false
-  end
 end
