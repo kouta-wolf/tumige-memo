@@ -35,13 +35,10 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      db:
-        condition: service_healthy
-      chrome:
-        condition: service_started
-  chrome:
+      - db
+      - selenium_chrome
+  selenium_chrome:
     image: selenium/standalone-chrome:latest
-    shm_size: 2gb # ブラウザのクラッシュ防止
     ports:
       - "4444:4444"
 volumes:
