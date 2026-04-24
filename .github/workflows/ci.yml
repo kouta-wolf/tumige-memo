@@ -45,6 +45,11 @@ jobs:
           bundle exec rails db:prepare
         env:
           RAILS_ENV: test
+          
+      - name: Asset precompile
+        run: bundle exec rails assets:precompile
+        env:
+          RAILS_ENV: test
 
       - name: Run rspec
         run: bundle exec rspec
