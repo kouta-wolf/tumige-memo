@@ -1,0 +1,21 @@
+<h1 class="text-4xl font-extrabold text-gray-800 tracking-tight">ログイン</h1>
+<p class="text-sm text-gray-500 mt-2">おかえりなさい！ゲームの続きを記録しましょう</p>
+
+<div>
+  <%= form_with url: sessions_path, scope: :session do |f| %>
+    <div>
+      <%= f.label :email, "メールアドレス", class: "block text-base font-medium text-gray-700 ml-1" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field" %>
+    </div>
+    
+    <div>
+      <%= f.label :password, "パスワード", class: "block text-base font-medium text-gray-700 ml-1" %>
+      <%= f.password_field :password, autocomplete: "password", class: "input-field" %>
+    </div>
+    
+    <div class="pt-8">
+      <%= f.submit "ログインする", class: "btn btn-primary py-3" %>
+    </div>
+  <% end %>
+</div>
+
