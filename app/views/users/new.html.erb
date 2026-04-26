@@ -3,29 +3,23 @@
 
 <div>
   <%= form_with model: @user do |f| %>
-    <div>
+    <div class="space-y-2 text-left">
       <%= f.label :name, "名前", class: "label-title" %>
       <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "input-field" %>
-    </div>
 
-    <div>
       <%= f.label :email, "メールアドレス", class: "label-title" %>
       <%= f.email_field :email, autocomplete: "email", class: "input-field" %>
-    </div>  
     
-    <div>
       <%= f.label :password, "パスワード", class: "label-title" %>
       <%= f.password_field :password, autocomplete: "password", class: "input-field" %>
-    </div>
 
-    <div>
       <%= f.label :password_confirmation, "パスワード(確認)", class: "label-title" %>
       <%= f.password_field :password_confirmation, autocomplete: "password", class: "input-field" %>
     </div>
 
     <div class="pt-8">
       <%= f.submit "登録", 
-        class: "btn btn-primary py-3" %>
+        class: "btn-primary" %>
     </div>
   <% end %>
 </div>
