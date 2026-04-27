@@ -1,0 +1,11 @@
+<%# 引数: path, label, icon_path %>
+
+<li>
+  <%= link_to path, class: "group relative flex justify-center rounded-sm p-2 text-gray-500 hover:bg-gray-50 hover:text-gray-700" do %>
+    <%= render "shared/icons/#{icon_path}" %>
+
+    <span class="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
+      <%= label %>
+    </span>
+  <% end %>
+</li>
