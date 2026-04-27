@@ -14,5 +14,14 @@ RSpec.describe "Sessions", type: :system do
       expect(page).to have_content "ログインしました"
       expect(current_path).to eq game_path
     end
+
+    it '正しい手順であればログイン後、ログアウトできること' do
+      sign_in_as(user)
+      expect(page).to have_content "ログインしました"
+      click_on "Logout"
+      expect(current_path).to eq root_path
+      expect(page).to have_content "ログアウトしました"
+      expect(page).not_to have_content "Logout"
+    end
   end
 end
