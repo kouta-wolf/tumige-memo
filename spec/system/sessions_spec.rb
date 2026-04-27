@@ -12,7 +12,7 @@ RSpec.describe "Sessions", type: :system do
       click_button "ログインする"
 
       expect(page).to have_content "ログインしました"
-      expect(current_path).to eq games_index_path
+      expect(current_path).to eq game_path
     end
   end
 end
