@@ -3,7 +3,7 @@
 <p class="my-4 text-sm text-gray-500 mt-2">おかえりなさい！ゲームの続きを記録しましょう</p>
 
 <div>
-  <%= form_with url: sessions_path, scope: :session do |f| %>
+  <%= form_with url: session_path, scope: :session do |f| %>
     <div class="space-y-2 text-left">
       <%= f.label :email, "メールアドレス", class: "label-title" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field" %>
