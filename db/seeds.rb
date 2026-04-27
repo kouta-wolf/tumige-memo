@@ -15,13 +15,13 @@ puts "User: #{user.name} へのデータ作成を開始します..."
   game = Game.create!(
     title: "#{Faker::Game.title} #{i + 1}",
     publisher: Faker::Company.name,
-    release_date: Faker::Date.backward(days: 3650) 
+    release_date: Faker::Date.backward(days: 3650)
   )
 
   UserGame.create!(
     user: user,
     game: game,
-    status: [0, 1, 2].sample
+    status: [ 0, 1, 2 ].sample
   )
 end
 
