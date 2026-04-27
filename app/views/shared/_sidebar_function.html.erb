@@ -1,6 +1,6 @@
-<%# 引数: path, label, icon_path %>
+<%# 引数: path, data(任意), label, icon_path %>
 
-<%= link_to path, class: "group relative flex w-full justify-center rounded-lg px-2 py-1.5 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700" do %>
+<%= link_to path, data: local_assigns[:data], class: "group relative flex w-full justify-center rounded-lg px-2 py-1.5 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700" do %>
   <%= render "shared/icons/#{icon_path}" %>
 
   <span class="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
